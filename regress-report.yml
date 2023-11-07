@@ -1,0 +1,76 @@
+test-cases:
+  - summary: |
+      Проверка смены интерфейса сайта на русский язык
+    status: pass
+
+  - summary: |
+      Проверка входа в корзину
+    status: pass
+bugreports:
+  - summary: |
+      Полное обновление страницы при нажатии на кнопку "Store"
+    environment: |
+      Яндекс.Браузер   23.9.4.837 (64-bit)
+      ОС Windows 10 PRO 22H2
+    steps-to-reproduce: |
+      1. Зайти на английскую версию страницы https://products-store-git-v2bugfixes-hexlet-components.vercel.app/
+      2. Нажать на кнопку "Cart"
+      3. Нажать на кнопку "Store"
+    expected-result: |
+      Открытие страницы товара без перезагрузки страницы
+    actual-result: |
+      Открытие страницы товара с перезагрузкой сайта
+      
+  - summary: |
+      Возвращение товара в корзину после его удаления
+    environment: |
+      Яндекс.Браузер   23.9.4.837 (64-bit)
+      ОС Windows 10 PRO 22H2
+    steps-to-reproduce: |
+      1. Зайти на английскую версию страницы https://products-store-git-v2bugfixes-hexlet-components.vercel.app/
+      2. Добавить любой товар в корзину и нажать на кнопку "Cart"
+      3. Нажать на кнопку "Clear cart"
+      4. Нажать на кнопку "Store"
+    expected-result: |
+      Открытие страницы товара. Корзина должна быть пустой
+    actual-result: |
+      Открытие страницы товара. Товар не был удален из корзины
+
+  - summary: |
+      Сортировка товара по цене
+    environment: |
+      Яндекс.Браузер   23.9.4.837 (64-bit)
+      ОС Windows 10 PRO 22H2
+    steps-to-reproduce: |
+      1. Зайти на английскую версию страницы https://products-store-git-v2bugfixes-hexlet-components.vercel.app/
+      2. В поле "Price" ввести любую сумму
+    expected-result: |
+      Обновление списка товаров в зависимости от введенной суммы
+    actual-result: |
+      Товар на страницы не обновился после введенной суммы
+      
+- summary: |
+      Пропадает кнопка "Next" при выборе категории товара
+    environment: |
+      Яндекс.Браузер   23.9.4.837 (64-bit)
+      ОС Windows 10 PRO 22H2
+    steps-to-reproduce: |
+      1. Зайти на английскую версию страницы https://products-store-git-v2bugfixes-hexlet-components.vercel.app/
+      2. Выбрать пустую категорию в поле "Category"
+    expected-result: |
+      Обновление списка товаров с возможностью перехода на следующую страницу с помощью кнопки "Next"
+    actual-result: |
+      Товар обновился. Кнопка "Next" пропала.
+- summary: |
+      Появление всего списка товаров при выборе любой категории и бренда, не соответсвуюшего категории товара
+    environment: |
+      Яндекс.Браузер   23.9.4.837 (64-bit)
+      ОС Windows 10 PRO 22H2
+    steps-to-reproduce: |
+      1. Зайти на английскую версию страницы https://products-store-git-v2bugfixes-hexlet-components.vercel.app/
+      2. Выбрать "Laptops" в поле "Category"
+      3. Нажать на любой бренд не продающий ноутбуки. Например, "Dry Rose"
+    expected-result: |
+      Обновление списка товаров с сообщением "Ничего не найдено!"
+    actual-result: |
+      Обновление и появление всего списка товаров 
