@@ -14,9 +14,9 @@
 
 - summary: |
     Проверка входа в корзину
-requirement: |
+  requirement: |
     При нажатии на кнопку "Cart" пользователя должно перенести в корзину
-  prerequisites:
+  prerequisites: |
     Открыта главная страница на английском языке
   test-data: |
     Нет
